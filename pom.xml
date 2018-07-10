@@ -9,11 +9,71 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
-    <modules>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
+        <java.source.version>1.8</java.source.version>
+        <java.target.version>1.8</java.target.version>
+    </properties>
+
+
+    <modules>
         <module>Library</module>
         <module>Server</module>
         <module>Client</module>
     </modules>
+
+    <inceptionYear>2018</inceptionYear>
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+        </license>
+    </licenses>
+    <organization>
+        <name>Dragon-Labs</name>
+        <url>https://www.dragon-labs.de</url>
+    </organization>
+    <developers>
+        <developer>
+            <id>Alphyron</id>
+            <name>Lennard Brinkhaus</name>
+            <email>admin@dragon-labs.de</email>
+            <url>https://www.dragon-labs.de/</url>
+            <organization>Dragon-Labs</organization>
+            <organizationUrl>https://www.dragon-labs.de</organizationUrl>
+            <roles>
+                <role>project leader</role>
+                <role>developer</role>
+            </roles>
+            <timezone>Germany/Frankfurt</timezone>
+        </developer>
+    </developers>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>${java.source.version}</source>
+                        <target>${java.target.version}</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.25.Final</version>
+        </dependency>
+
+    </dependencies>
+
 
 </project>

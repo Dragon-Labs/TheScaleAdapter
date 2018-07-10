@@ -26,12 +26,13 @@ public class PacketManager
 
     /**
      * Register a new packet
-     * @param packetClass the packetclass that need to be register
+     * @param packetClass the packetClass that need to be register
      * @return PacketManager his own object
      * @throws PacketIdAlreadyExistsException Is thrown the a packet will be registered with an id, that already exists.
      * @throws NoMetaExistsException Is thrown when you try to register an packet without the necessary meta
      */
     public PacketManager registerPacket(Class<? extends ScalePacket> packetClass) throws PacketIdAlreadyExistsException, NoMetaExistsException {
+
 
         ScalePacketMeta meta = packetClass.getAnnotation(ScalePacketMeta.class);
         if (meta == null)

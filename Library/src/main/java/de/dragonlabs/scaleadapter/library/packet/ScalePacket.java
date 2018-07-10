@@ -16,16 +16,35 @@ import java.io.IOException;
 
 public abstract class ScalePacket {
 
+    /**
+     * The channel from where the Packet come
+     */
     private Channel channel;
 
-    abstract public void onRead(ByteBufInputStream input) throws IOException;
+    /**
+     * This method is be used when a message come and need to be converted back to the back from the ByteBuf
+     *
+     * @param input The ByteBugInputStream to read the stream
+     */
+    abstract public void onRead(ByteBufInputStream input);
 
-    abstract public void onWrite(ByteBufOutputStream output) throws IOException;
+    /**
+     * This method is be used when a message come and need to be send  and need to convert to a ByteBuf
+     *
+     * @param output The ByteBufOutputStream to write data in the stream
+     */
+    abstract public void onWrite(ByteBufOutputStream output);
 
+    /**
+     * @return Return the Channel fromm where the Packet come
+     */
     public Channel getChannel() {
         return channel;
     }
 
+    /**
+     * @param channel Set the Channel from where the Packet come
+     */
     public void setChannel(Channel channel) {
         this.channel = channel;
     }

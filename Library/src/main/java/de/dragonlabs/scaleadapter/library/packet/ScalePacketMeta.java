@@ -15,6 +15,12 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
+/**
+ * This meta-information is used for the specific Packet data
+ */
 public @interface ScalePacketMeta {
+    /**
+     * @return the id from the packet, which need to be an specific identifier
+     */
     byte id() default -1;
 }

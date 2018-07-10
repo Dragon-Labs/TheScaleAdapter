@@ -8,12 +8,14 @@
 
 package de.dragonlabs.scaleadapter.library.exceptions;
 
+import de.dragonlabs.scaleadapter.library.packet.ScalePacket;
+
 /**
  * This Exception is be called when someone try to register a packet with an id, that is already registered
  */
-public class PacketIdAlreadyExcesException extends Exception
+public class PacketIdAlreadyExistsException extends Exception
 {
-    public PacketIdAlreadyExcesException(Byte id, Class<?> packetClass)
+    public PacketIdAlreadyExistsException(Byte id, Class<? extends ScalePacket> packetClass)
     {
         super("Packet with ID: " + id + " already registered and can't use for " + packetClass);
     }

@@ -12,6 +12,8 @@ import de.dragonlabs.scaleadapter.library.network.handler.ScaleConnectionHandler
 import io.netty.buffer.ByteBufInputStream;
 import io.netty.buffer.ByteBufOutputStream;
 
+import java.io.IOException;
+
 public abstract class ScalePacket {
 
     /**
@@ -24,14 +26,14 @@ public abstract class ScalePacket {
      *
      * @param input The ByteBugInputStream to read the stream
      */
-    abstract public void onRead(ByteBufInputStream input);
+    abstract public void onRead(ByteBufInputStream input) throws IOException;
 
     /**
      * This method is be used when a message come and need to be send  and need to convert to a ByteBuf
      *
      * @param output The ByteBufOutputStream to write data in the stream
      */
-    abstract public void onWrite(ByteBufOutputStream output);
+    abstract public void onWrite(ByteBufOutputStream output) throws IOException;
 
     /**
      * @return Return the Connection Handler which handles the Packet

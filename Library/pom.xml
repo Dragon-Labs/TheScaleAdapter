@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.dragonlabs.scaleadapter.library</groupId>
-    <artifactId>Library</artifactId>
+    <artifactId>ScaleAdpater-Library</artifactId>
     <dependencies>
 
         <dependency>

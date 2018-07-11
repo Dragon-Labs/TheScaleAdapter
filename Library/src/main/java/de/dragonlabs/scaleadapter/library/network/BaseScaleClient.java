@@ -11,12 +11,11 @@ package de.dragonlabs.scaleadapter.library.network;
 import de.dragonlabs.scaleadapter.library.config.ScaleConfig;
 import de.dragonlabs.scaleadapter.library.network.channel.ScaleChannelInitializer;
 import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.ChannelOption;
 import io.netty.channel.epoll.Epoll;
 import io.netty.channel.epoll.EpollEventLoopGroup;
-import io.netty.channel.epoll.EpollServerSocketChannel;
+import io.netty.channel.epoll.EpollSocketChannel;
 import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.channel.socket.nio.NioSocketChannel;
 
 public class BaseScaleClient extends ScaleClient {
 
@@ -33,10 +32,8 @@ public class BaseScaleClient extends ScaleClient {
         try {
             channel = bootstrap
                     .group(deamon)
-                    .channel(Epoll.isAvailable() ? EpollServerSocketChannel.class : NioServerSocketChannel.class)
+                    .channel(Epoll.isAvailable() ? EpollSocketChannel.class : NioSocketChannel.class)
                     .handler(new ScaleChannelInitializer(scaleConfig.getPacketManager(), scaleConfig.getEventManager()))
-                    .option(ChannelOption.TCP_NODELAY, true)
-                    .option(ChannelOption.SO_BACKLOG, 50)
                     .connect(scaleConfig.getHostname(), scaleConfig.getPort())
                     .sync().channel();
         }

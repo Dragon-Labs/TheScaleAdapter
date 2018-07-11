@@ -8,7 +8,6 @@
 
 package de.dragonlabs.scaleadapter.library.protocol;
 
-import com.sun.xml.internal.ws.api.message.Packet;
 import de.dragonlabs.scaleadapter.library.event.Listener;
 import de.dragonlabs.scaleadapter.library.event.ScalePacketHandler;
 import de.dragonlabs.scaleadapter.library.packet.ScalePacket;
@@ -16,7 +15,6 @@ import de.dragonlabs.scaleadapter.library.packet.ScalePacket;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class EventManager {
     private ArrayList<Listener> listeners;

@@ -37,8 +37,6 @@ public class BaseScaleServer extends ScaleServer {
                     .channel(Epoll.isAvailable() ? EpollServerSocketChannel.class : NioServerSocketChannel.class)
                     .childHandler(new ScaleChannelInitializer(scaleConfig.getPacketManager(), scaleConfig.getEventManager()))
                     .childOption(ChannelOption.SO_KEEPALIVE, true)
-                    .option(ChannelOption.TCP_NODELAY, true)
-                    .option(ChannelOption.SO_BACKLOG, 50)
                     .bind(this.scaleConfig.getHostname(), this.scaleConfig.getPort())
                     .sync().channel();
         }

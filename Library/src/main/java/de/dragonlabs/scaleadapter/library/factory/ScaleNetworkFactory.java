@@ -9,16 +9,20 @@
 package de.dragonlabs.scaleadapter.library.factory;
 
 import de.dragonlabs.scaleadapter.library.config.ScaleConfig;
+import de.dragonlabs.scaleadapter.library.network.BaseScaleClient;
+import de.dragonlabs.scaleadapter.library.network.BaseScaleServer;
+import de.dragonlabs.scaleadapter.library.network.ScaleClient;
+import de.dragonlabs.scaleadapter.library.network.ScaleServer;
 
 public class ScaleNetworkFactory
 {
-    public static void createScaleServer(ScaleConfig config)
+    public static ScaleServer createScaleServer(ScaleConfig config)
     {
-
+        return new BaseScaleServer(config);
     }
 
-    public static void createScaleClient(ScaleConfig config)
+    public static ScaleClient createScaleClient(ScaleConfig config)
     {
-
+        return new BaseScaleClient(config);
     }
 }

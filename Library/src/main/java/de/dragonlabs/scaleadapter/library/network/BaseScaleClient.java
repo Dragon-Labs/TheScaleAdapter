@@ -10,6 +10,7 @@ package de.dragonlabs.scaleadapter.library.network;
 
 import de.dragonlabs.scaleadapter.library.config.ScaleConfig;
 import de.dragonlabs.scaleadapter.library.network.channel.ScaleChannelInitializer;
+import de.dragonlabs.scaleadapter.library.packet.ScalePacket;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.epoll.Epoll;
 import io.netty.channel.epoll.EpollEventLoopGroup;
@@ -17,10 +18,18 @@ import io.netty.channel.epoll.EpollSocketChannel;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
+import java.util.Arrays;
+
 public class BaseScaleClient extends ScaleClient {
 
     public BaseScaleClient(ScaleConfig config) {
         super(config);
+    }
+
+    @Override
+    public void sendPackets(ScalePacket... packets) {
+        Arrays.stream(packets).forEach(channel::write);
+        channel.flush();
     }
 
     @Override
@@ -42,4 +51,7 @@ public class BaseScaleClient extends ScaleClient {
             e.printStackTrace();
         }
     }
+
+
+
 }

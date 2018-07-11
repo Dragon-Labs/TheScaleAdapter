@@ -9,6 +9,7 @@
 package de.dragonlabs.scaleadapter.library.network;
 
 import de.dragonlabs.scaleadapter.library.config.ScaleConfig;
+import de.dragonlabs.scaleadapter.library.packet.ScalePacket;
 import io.netty.channel.EventLoopGroup;
 
 public abstract class ScaleClient extends NetworkComponent {
@@ -24,4 +25,6 @@ public abstract class ScaleClient extends NetworkComponent {
         channel.close();
         deamon.shutdownGracefully();
     }
+
+    abstract public void sendPackets(ScalePacket... packets);
 }

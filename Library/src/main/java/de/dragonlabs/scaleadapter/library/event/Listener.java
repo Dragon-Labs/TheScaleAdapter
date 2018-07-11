@@ -8,5 +8,4 @@
 
 package de.dragonlabs.scaleadapter.library.event;
 
-public interface Listener {
-}
+public interface Listener {}

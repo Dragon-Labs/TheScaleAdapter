@@ -8,18 +8,16 @@
 
 package de.dragonlabs.scaleadapter.library.packet;
 
+import de.dragonlabs.scaleadapter.library.network.handler.ScaleConnectionHandler;
 import io.netty.buffer.ByteBufInputStream;
 import io.netty.buffer.ByteBufOutputStream;
-import io.netty.channel.Channel;
-
-import java.io.IOException;
 
 public abstract class ScalePacket {
 
     /**
-     * The channel from where the Packet come
+     * The ConnectionHandler for every single Connection
      */
-    private Channel channel;
+    private ScaleConnectionHandler handler;
 
     /**
      * This method is be used when a message come and need to be converted back to the back from the ByteBuf
@@ -36,16 +34,16 @@ public abstract class ScalePacket {
     abstract public void onWrite(ByteBufOutputStream output);
 
     /**
-     * @return Return the Channel fromm where the Packet come
+     * @return Return the Connection Handler which handles the Packet
      */
-    public Channel getChannel() {
-        return channel;
+    public ScaleConnectionHandler getHandler() {
+        return handler;
     }
 
     /**
-     * @param channel Set the Channel from where the Packet come
+     * @param handler Set the Connection Handler which handles the Packet
      */
-    public void setChannel(Channel channel) {
-        this.channel = channel;
+    public void setHandler(ScaleConnectionHandler handler) {
+        this.handler = handler;
     }
 }

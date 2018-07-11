@@ -20,8 +20,6 @@
 
     <modules>
         <module>Library</module>
-        <module>Server</module>
-        <module>Client</module>
     </modules>
 
     <inceptionYear>2018</inceptionYear>

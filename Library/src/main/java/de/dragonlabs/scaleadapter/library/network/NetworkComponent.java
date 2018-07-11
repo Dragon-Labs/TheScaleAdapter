@@ -9,12 +9,14 @@
 package de.dragonlabs.scaleadapter.library.network;
 
 import de.dragonlabs.scaleadapter.library.config.ScaleConfig;
+import io.netty.channel.Channel;
 
 public abstract class NetworkComponent
 {
-    protected ScaleConfig scaleConfig;
+    ScaleConfig scaleConfig;
+    Channel channel;
 
-    public NetworkComponent(ScaleConfig config)
+    NetworkComponent(ScaleConfig config)
     {
         this.scaleConfig = config;
     }
@@ -32,7 +34,9 @@ public abstract class NetworkComponent
     /**
      * @return if the server or client is open / connected
      */
-    abstract public Boolean isOpen();
+    public Boolean isOpen() {
+        return this.channel != null && this.channel.isActive();
+    }
 
     /**
      *

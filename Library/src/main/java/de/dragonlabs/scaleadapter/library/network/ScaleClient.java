@@ -11,20 +11,17 @@ package de.dragonlabs.scaleadapter.library.network;
 import de.dragonlabs.scaleadapter.library.config.ScaleConfig;
 import io.netty.channel.EventLoopGroup;
 
-public abstract class ScaleServer extends NetworkComponent {
+public abstract class ScaleClient extends NetworkComponent {
 
-    EventLoopGroup master;
     EventLoopGroup deamon;
 
-    ScaleServer(ScaleConfig config) {
+    ScaleClient(ScaleConfig config) {
         super(config);
     }
 
     @Override
     public void close() {
         channel.close();
-        master.shutdownGracefully();
         deamon.shutdownGracefully();
-
     }
 }

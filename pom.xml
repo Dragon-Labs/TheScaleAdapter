@@ -20,7 +20,7 @@
 
     <modules>
         <module>Library</module>
-        <module>ScaleAdapter-Example</module>
+        <module>Example</module>
     </modules>
 
     <inceptionYear>2018</inceptionYear>

@@ -35,14 +35,18 @@ public class EchoServer
         setupServer();
         setupClient();
 
+        //The Server is starting and then the client connect to the server
         server.open();
         client.open();
 
+        //Simple command line
         Scanner scanner = new Scanner(System.in);
         while (true)
         {
+            //Read the input
             String line = scanner.nextLine();
 
+            //If the user write "close" the server and the client close the connection and shutdown normally
             if(line.equalsIgnoreCase("close"))
             {
                 server.close();
@@ -50,37 +54,50 @@ public class EchoServer
                 break;
             }
 
+            // The message send to the server
             client.sendPackets(new MessagePacket(line));
         }
     }
 
     private void setupServer()
     {
+        //Create own Packet and EventManager for the server
         EventManager eventManager = new EventManager();
-        eventManager.registerListener(new de.dragonlabs.scaleadapter.example.server.handler.MessageListener());
         PacketManager packetManager = new PacketManager();
+
+        //Register the Server Listener
+        eventManager.registerListener(new de.dragonlabs.scaleadapter.example.server.handler.MessageListener());
         try {
+            //Register the Message Packet
             packetManager.registerPacket(MessagePacket.class);
         } catch (PacketIdAlreadyExistsException | NoMetaExistsException e) {
             e.printStackTrace();
         }
 
+        //Create the Config with Packet and EventManager and the Server information
         ScaleConfig config = new ScaleConfig("localhost", 8888, packetManager, eventManager);
+        //Create an server with the data from the config
         server = ScaleNetworkFactory.createScaleServer(config);
     }
 
     private void setupClient()
     {
+        //Create own Packet and EventManager for the client
         EventManager eventManager = new EventManager();
-        eventManager.registerListener(new de.dragonlabs.scaleadapter.example.client.handler.MessageListener());
         PacketManager packetManager = new PacketManager();
+
+        //Register the Client Listener
+        eventManager.registerListener(new de.dragonlabs.scaleadapter.example.client.handler.MessageListener());
         try {
+            //Register the Message Packet
             packetManager.registerPacket(MessagePacket.class);
         } catch (PacketIdAlreadyExistsException | NoMetaExistsException e) {
             e.printStackTrace();
         }
 
+        //Create the Config with Packet and EventManager and the Client information
         ScaleConfig config = new ScaleConfig("localhost", 8888, packetManager, eventManager);
+        //Create an client with the data from the config
         client = ScaleNetworkFactory.createScaleClient(config);
     }
 }

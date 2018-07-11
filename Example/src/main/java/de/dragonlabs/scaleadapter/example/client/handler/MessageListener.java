@@ -17,6 +17,7 @@ public class MessageListener implements Listener
     @ScalePacketHandler
     public void onMessage(MessagePacket packet)
     {
+        // Print every message that the client get from the Server
         System.out.println("Msg From Server: " + packet.getMessage());
     }
 }

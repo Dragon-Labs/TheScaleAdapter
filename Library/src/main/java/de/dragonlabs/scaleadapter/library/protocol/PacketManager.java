@@ -8,7 +8,6 @@
 
 package de.dragonlabs.scaleadapter.library.protocol;
 
-import com.sun.xml.internal.ws.api.message.Packet;
 import de.dragonlabs.scaleadapter.library.exceptions.NoMetaExistsException;
 import de.dragonlabs.scaleadapter.library.exceptions.PacketIdAlreadyExistsException;
 import de.dragonlabs.scaleadapter.library.packet.ScalePacket;

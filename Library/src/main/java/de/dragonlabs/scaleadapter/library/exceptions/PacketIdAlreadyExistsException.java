@@ -17,6 +17,6 @@ public class PacketIdAlreadyExistsException extends Exception
 {
     public PacketIdAlreadyExistsException(Byte id, Class<? extends ScalePacket> packetClass)
     {
-        super("Packet with ID: " + id + " already registered and can't use for " + packetClass);
+        super("Packet with ID '" + id + "' already registered and can't use for " + packetClass);
     }
 }

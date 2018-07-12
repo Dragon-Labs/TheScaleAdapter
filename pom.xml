@@ -9,6 +9,8 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
+    <url>https://github.com/Dragon-Labs/TheScaleAdapter</url>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -74,5 +76,8 @@
 
     </dependencies>
 
-
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/Dragon-Labs/TheScaleAdapter/issues</url>
+    </issueManagement>
 </project>

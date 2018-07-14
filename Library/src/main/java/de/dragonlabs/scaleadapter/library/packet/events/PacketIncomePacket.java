@@ -14,6 +14,9 @@ import io.netty.buffer.ByteBufInputStream;
 import io.netty.buffer.ByteBufOutputStream;
 import io.netty.channel.Channel;
 
+/**
+ * This packet will be thrown when another packet come from the network and you can decide if the packet will be called or canceled.
+ */
 @ScalePacketMeta(id = -12)
 public class PacketIncomePacket extends ScalePacket {
 

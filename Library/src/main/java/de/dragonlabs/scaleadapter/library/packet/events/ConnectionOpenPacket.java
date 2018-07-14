@@ -14,6 +14,9 @@ import io.netty.buffer.ByteBufInputStream;
 import io.netty.buffer.ByteBufOutputStream;
 import io.netty.channel.Channel;
 
+/**
+ * This Packet will be called when a connection established
+ */
 @ScalePacketMeta(id = -10)
 public class ConnectionOpenPacket extends ScalePacket {
 

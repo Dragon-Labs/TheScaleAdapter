@@ -14,6 +14,9 @@ import io.netty.buffer.ByteBufInputStream;
 import io.netty.buffer.ByteBufOutputStream;
 import io.netty.channel.Channel;
 
+/**
+ * This packet will be called when a error is thrown in the network stuff
+ */
 @ScalePacketMeta(id = -13)
 public class NetworkErrorPacket extends ScalePacket {
 

@@ -9,6 +9,10 @@
 package de.dragonlabs.scaleadapter.library.network.handler;
 
 import de.dragonlabs.scaleadapter.library.packet.ScalePacket;
+import de.dragonlabs.scaleadapter.library.packet.events.ConnectionClosePacket;
+import de.dragonlabs.scaleadapter.library.packet.events.ConnectionOpenPacket;
+import de.dragonlabs.scaleadapter.library.packet.events.NetworkErrorPacket;
+import de.dragonlabs.scaleadapter.library.packet.events.PacketIncomePacket;
 import de.dragonlabs.scaleadapter.library.protocol.EventManager;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
@@ -29,16 +33,34 @@ public class ScaleConnectionHandler extends SimpleChannelInboundHandler<ScalePac
     }
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+    public void channelActive(ChannelHandlerContext ctx) {
+        ConnectionOpenPacket packet = new ConnectionOpenPacket(channel);
+        eventManager.call(packet);
+        if(packet.getCloseConnection()) ctx.close();
+    }
+
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) {
+        eventManager.call(new ConnectionClosePacket(channel));
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         if(cause.getClass() == IOException.class) {
             return;
         }
 
-        cause.printStackTrace();
+        eventManager.call(new NetworkErrorPacket(channel, cause));
     }
 
     @Override
-    protected void channelRead0(ChannelHandlerContext channelHandlerContext, ScalePacket scalePacket) throws Exception {
+    protected void channelRead0(ChannelHandlerContext channelHandlerContext, ScalePacket scalePacket) {
+
+        PacketIncomePacket packet = new PacketIncomePacket(channel, scalePacket.getClass().getSimpleName());
+        eventManager.call(packet);
+
+        if(packet.getCancelPacket()) return;
+
         scalePacket.setHandler(this);
         eventManager.call(scalePacket);
     }

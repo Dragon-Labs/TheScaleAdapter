@@ -67,6 +67,7 @@ public class EchoServer
 
         //Register the Server Listener
         eventManager.registerListener(new de.dragonlabs.scaleadapter.example.server.handler.MessageListener());
+        eventManager.registerListener(new de.dragonlabs.scaleadapter.example.server.handler.ConnectionListener());
         try {
             //Register the Message Packet
             packetManager.registerPacket(MessagePacket.class);

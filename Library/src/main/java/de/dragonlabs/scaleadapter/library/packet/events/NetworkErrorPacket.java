@@ -12,7 +12,6 @@ import de.dragonlabs.scaleadapter.library.packet.ScalePacket;
 import de.dragonlabs.scaleadapter.library.packet.ScalePacketMeta;
 import io.netty.buffer.ByteBufInputStream;
 import io.netty.buffer.ByteBufOutputStream;
-import io.netty.channel.Channel;
 
 /**
  * This packet will be called when a error is thrown in the network stuff
@@ -20,11 +19,9 @@ import io.netty.channel.Channel;
 @ScalePacketMeta(id = -13)
 public class NetworkErrorPacket extends ScalePacket {
 
-    private Channel channel;
     private Throwable error;
 
-    public NetworkErrorPacket(Channel channel, Throwable error) {
-        this.channel = channel;
+    public NetworkErrorPacket(Throwable error) {
         this.error = error;
     }
 
@@ -36,10 +33,6 @@ public class NetworkErrorPacket extends ScalePacket {
     @Override
     public void onWrite(ByteBufOutputStream output) {
 
-    }
-
-    public Channel getChannel() {
-        return channel;
     }
 
     public Throwable getError() {

@@ -12,7 +12,6 @@ import de.dragonlabs.scaleadapter.library.packet.ScalePacket;
 import de.dragonlabs.scaleadapter.library.packet.ScalePacketMeta;
 import io.netty.buffer.ByteBufInputStream;
 import io.netty.buffer.ByteBufOutputStream;
-import io.netty.channel.Channel;
 
 /**
  * This Packet will be called when a connection established
@@ -20,12 +19,10 @@ import io.netty.channel.Channel;
 @ScalePacketMeta(id = -10)
 public class ConnectionOpenPacket extends ScalePacket {
 
-    private Channel channel;
     private Boolean closeConnection;
 
-    public ConnectionOpenPacket(Channel channel)
+    public ConnectionOpenPacket()
     {
-        this.channel = channel;
         closeConnection = false;
     }
 
@@ -37,10 +34,6 @@ public class ConnectionOpenPacket extends ScalePacket {
     @Override
     public void onWrite(ByteBufOutputStream output) {
 
-    }
-
-    public Channel getChannel() {
-        return channel;
     }
 
     public Boolean getCloseConnection() {

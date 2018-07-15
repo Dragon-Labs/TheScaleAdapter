@@ -38,6 +38,7 @@ public class ScaleNetworkDecoder extends ByteToMessageDecoder
         }
 
         try {
+            packet.setChannel(ctx.channel());
             packet.onRead(new ByteBufInputStream(byteBuf));
             list.add(packet);
         }

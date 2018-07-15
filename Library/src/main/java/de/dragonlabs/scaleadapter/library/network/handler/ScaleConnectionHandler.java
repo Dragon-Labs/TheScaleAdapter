@@ -34,14 +34,17 @@ public class ScaleConnectionHandler extends SimpleChannelInboundHandler<ScalePac
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-        ConnectionOpenPacket packet = new ConnectionOpenPacket(channel);
+        ConnectionOpenPacket packet = new ConnectionOpenPacket();
+        packet.setChannel(channel);
         eventManager.call(packet);
         if(packet.getCloseConnection()) ctx.close();
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) {
-        eventManager.call(new ConnectionClosePacket(channel));
+        ConnectionClosePacket packet = new ConnectionClosePacket();
+        packet.setChannel(channel);
+        eventManager.call(packet);
     }
 
     @Override
@@ -50,13 +53,16 @@ public class ScaleConnectionHandler extends SimpleChannelInboundHandler<ScalePac
             return;
         }
 
-        eventManager.call(new NetworkErrorPacket(channel, cause));
+        NetworkErrorPacket packet = new NetworkErrorPacket(cause);
+        packet.setChannel(channel);
+        eventManager.call(packet);
     }
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, ScalePacket scalePacket) {
 
-        PacketIncomePacket packet = new PacketIncomePacket(channel, scalePacket.getClass().getSimpleName());
+        PacketIncomePacket packet = new PacketIncomePacket(scalePacket.getClass().getSimpleName());
+        packet.setChannel(channel);
         eventManager.call(packet);
 
         if(packet.getCancelPacket()) return;

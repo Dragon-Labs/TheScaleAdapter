@@ -12,19 +12,12 @@ import de.dragonlabs.scaleadapter.library.packet.ScalePacket;
 import de.dragonlabs.scaleadapter.library.packet.ScalePacketMeta;
 import io.netty.buffer.ByteBufInputStream;
 import io.netty.buffer.ByteBufOutputStream;
-import io.netty.channel.Channel;
 
 /**
  * This Packet will be called when a connection is closed
  */
 @ScalePacketMeta(id = -11)
 public class ConnectionClosePacket extends ScalePacket {
-
-    private Channel channel;
-
-    public ConnectionClosePacket(Channel channel) {
-        this.channel = channel;
-    }
 
     @Override
     public void onRead(ByteBufInputStream input) {
@@ -36,7 +29,4 @@ public class ConnectionClosePacket extends ScalePacket {
 
     }
 
-    public Channel getChannel() {
-        return channel;
-    }
 }

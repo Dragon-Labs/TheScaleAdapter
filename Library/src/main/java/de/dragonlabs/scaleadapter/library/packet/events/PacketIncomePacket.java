@@ -12,7 +12,6 @@ import de.dragonlabs.scaleadapter.library.packet.ScalePacket;
 import de.dragonlabs.scaleadapter.library.packet.ScalePacketMeta;
 import io.netty.buffer.ByteBufInputStream;
 import io.netty.buffer.ByteBufOutputStream;
-import io.netty.channel.Channel;
 
 /**
  * This packet will be thrown when another packet come from the network and you can decide if the packet will be called or canceled.
@@ -20,13 +19,11 @@ import io.netty.channel.Channel;
 @ScalePacketMeta(id = -12)
 public class PacketIncomePacket extends ScalePacket {
 
-    private Channel channel;
     private String packetName;
     private Boolean cancelPacket;
 
-    public PacketIncomePacket(Channel channel, String packetName)
+    public PacketIncomePacket(String packetName)
     {
-        this.channel = channel;
         this.packetName = packetName;
         this.cancelPacket = false;
     }
@@ -39,10 +36,6 @@ public class PacketIncomePacket extends ScalePacket {
     @Override
     public void onWrite(ByteBufOutputStream output) {
 
-    }
-
-    public Channel getChannel() {
-        return channel;
     }
 
     public String getPacketName() {

@@ -13,8 +13,9 @@ import de.dragonlabs.scaleadapter.library.event.ScalePacketHandler;
 import de.dragonlabs.scaleadapter.library.packet.ScalePacket;
 
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Objects;
 
 public class EventManager {
     private ArrayList<Listener> listeners;
@@ -52,19 +53,18 @@ public class EventManager {
      */
     public void call(ScalePacket packet)
     {
-        for (Listener l : listeners) {
-            for (Method m : l.getClass().getMethods()) {
-                if (!m.isAnnotationPresent(ScalePacketHandler.class)) continue;
-
-                if (!(m.getParameterTypes().length == 1 && m.getParameterTypes()[0].isAssignableFrom(packet.getClass())))
-                    continue;
-
-                try {
-                    m.invoke(l, packet);
-                } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+        listeners.stream().filter(Objects::nonNull).forEach(l -> {
+            Arrays.stream(l.getClass().getMethods())
+                    .filter(m -> m.isAnnotationPresent(ScalePacketHandler.class))
+                    .filter(m -> m.getParameterTypes().length == 1)
+                    .filter(m -> m.getParameterTypes()[0].isAssignableFrom(packet.getClass()))
+                    .forEach(m -> {
+                        try {
+                            m.invoke(l, packet);
+                        } catch (IllegalAccessException | InvocationTargetException e) {
+                            e.printStackTrace();
+                        }
+                    });
+        });
     }
 }

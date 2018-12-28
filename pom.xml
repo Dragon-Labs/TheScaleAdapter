@@ -47,7 +47,7 @@
                 <role>project leader</role>
                 <role>developer</role>
             </roles>
-            <timezone>Germany/Frankfurt</timezone>
+            <timezone>Germany</timezone>
         </developer>
     </developers>
 
@@ -71,7 +71,7 @@
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
-            <version>4.1.25.Final</version>
+            <version>4.1.32.Final</version>
         </dependency>
 
     </dependencies>

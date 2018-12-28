@@ -24,7 +24,7 @@ public class ScaleNetworkEndcoder  extends MessageToByteEncoder<ScalePacket>
     }
 
     @Override
-    protected void encode(ChannelHandlerContext ctx, ScalePacket packet, ByteBuf out) throws Exception {
+    protected void encode(ChannelHandlerContext ctx, ScalePacket packet, ByteBuf out) {
 
         Byte id = packetManager.getIdByClass(packet.getClass());
 

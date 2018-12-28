@@ -10,7 +10,7 @@ package de.dragonlabs.scaleadapter.library.exceptions;
 
 import de.dragonlabs.scaleadapter.library.packet.ScalePacket;
 
-public class NoMetaExistsException extends Exception
+public class NoMetaExistsException extends RuntimeException
 {
     public NoMetaExistsException( Class<? extends ScalePacket> packetClass)
     {

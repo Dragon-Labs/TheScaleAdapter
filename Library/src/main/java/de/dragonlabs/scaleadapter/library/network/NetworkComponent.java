@@ -40,7 +40,7 @@ public abstract class NetworkComponent
 
     /**
      *
-     * @return the ScaleCOnfig
+     * @return the ScaleConfig
      */
     public ScaleConfig getScaleConfig() {
         return scaleConfig;

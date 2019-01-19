@@ -19,7 +19,6 @@
         <java.target.version>1.8</java.target.version>
     </properties>
 
-
     <modules>
         <module>Library</module>
         <module>Example</module>
@@ -28,13 +27,16 @@
     <inceptionYear>2018</inceptionYear>
     <licenses>
         <license>
-            <name>Apache License 2.0</name>
+          <name>The Apache Software License, Version 2.0</name>
+          <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
+         
     <organization>
         <name>Dragon-Labs</name>
         <url>https://www.dragon-labs.de</url>
     </organization>
+         
     <developers>
         <developer>
             <id>Alphyron</id>

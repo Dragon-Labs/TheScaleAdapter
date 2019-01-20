@@ -28,10 +28,14 @@ public class ConnectionOpenPacket extends ScalePacket {
 
     @Override
     public void onRead(ByteBufInputStream input) {
+        // Empty because of not used but need to be implemented because of
+        // the abstract class
     }
 
     @Override
     public void onWrite(ByteBufOutputStream output) {
+        // Empty because of not used but need to be implemented because of
+        // the abstract class
     }
 
     public Boolean getCloseConnection() {

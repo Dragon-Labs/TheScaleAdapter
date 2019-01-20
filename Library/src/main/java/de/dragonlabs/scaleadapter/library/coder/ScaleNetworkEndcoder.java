@@ -30,7 +30,7 @@ public class ScaleNetworkEndcoder  extends MessageToByteEncoder<ScalePacket>
 
         if(id == null)
         {
-            throw new NullPointerException("Packet not found (" + packet.getClass() + ")");
+            throw new IllegalArgumentException("Packet not found (" + packet.getClass() + ")");
         }
 
         try {

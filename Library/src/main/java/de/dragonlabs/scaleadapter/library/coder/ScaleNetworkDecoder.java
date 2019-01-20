@@ -34,7 +34,7 @@ public class ScaleNetworkDecoder extends ByteToMessageDecoder
         ScalePacket packet = packetManager.getPacketById(id);
 
         if (packet == null) {
-            throw new NullPointerException("Don't find a Packet with the ID " + id);
+            throw new IllegalArgumentException("Don't find a Packet with the ID " + id);
         }
 
         try {

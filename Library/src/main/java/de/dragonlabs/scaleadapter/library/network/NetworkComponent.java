@@ -13,8 +13,8 @@ import io.netty.channel.Channel;
 
 public abstract class NetworkComponent
 {
-    ScaleConfig scaleConfig;
-    Channel channel;
+    protected ScaleConfig scaleConfig;
+    protected Channel channel;
 
     NetworkComponent(ScaleConfig config)
     {

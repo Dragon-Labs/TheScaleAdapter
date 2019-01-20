@@ -13,8 +13,8 @@ import io.netty.channel.EventLoopGroup;
 
 public abstract class ScaleServer extends NetworkComponent {
 
-    EventLoopGroup master;
-    EventLoopGroup deamon;
+    protected EventLoopGroup master;
+    protected EventLoopGroup deamon;
 
     ScaleServer(ScaleConfig config) {
         super(config);

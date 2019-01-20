@@ -14,7 +14,7 @@ import io.netty.channel.EventLoopGroup;
 
 public abstract class ScaleClient extends NetworkComponent {
 
-    EventLoopGroup deamon;
+    protected EventLoopGroup deamon;
 
     ScaleClient(ScaleConfig config) {
         super(config);

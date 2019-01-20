@@ -21,12 +21,10 @@ public class ConnectionClosePacket extends ScalePacket {
 
     @Override
     public void onRead(ByteBufInputStream input) {
-
     }
 
     @Override
     public void onWrite(ByteBufOutputStream output) {
-
     }
 
 }

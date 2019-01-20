@@ -28,12 +28,10 @@ public class ConnectionOpenPacket extends ScalePacket {
 
     @Override
     public void onRead(ByteBufInputStream input) {
-
     }
 
     @Override
     public void onWrite(ByteBufOutputStream output) {
-
     }
 
     public Boolean getCloseConnection() {

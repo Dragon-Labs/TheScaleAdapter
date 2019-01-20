@@ -27,12 +27,10 @@ public class NetworkErrorPacket extends ScalePacket {
 
     @Override
     public void onRead(ByteBufInputStream input)  {
-
     }
 
     @Override
     public void onWrite(ByteBufOutputStream output) {
-
     }
 
     public Throwable getError() {

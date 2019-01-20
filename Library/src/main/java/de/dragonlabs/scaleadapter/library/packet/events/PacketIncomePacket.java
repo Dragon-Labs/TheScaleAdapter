@@ -30,12 +30,10 @@ public class PacketIncomePacket extends ScalePacket {
 
     @Override
     public void onRead(ByteBufInputStream input)  {
-
     }
 
     @Override
     public void onWrite(ByteBufOutputStream output) {
-
     }
 
     public String getPacketName() {

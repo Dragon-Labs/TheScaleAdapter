@@ -11,7 +11,9 @@ package de.dragonlabs.scaleadapter.library.network;
 import de.dragonlabs.scaleadapter.library.config.ScaleConfig;
 import io.netty.channel.Channel;
 
-public abstract class NetworkComponent
+import java.io.Closeable;
+
+public abstract class NetworkComponent implements Closeable
 {
     protected ScaleConfig scaleConfig;
     protected Channel channel;
@@ -29,6 +31,7 @@ public abstract class NetworkComponent
     /**
      * Close the Server or the client close the connection to the server
      */
+    @Override
     abstract public void close();
 
     /**

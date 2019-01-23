@@ -15,7 +15,7 @@ import io.netty.buffer.ByteBufOutputStream;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
 
-public class ScaleNetworkEndcoder  extends MessageToByteEncoder<ScalePacket>
+public class ScaleNetworkEndcoder extends MessageToByteEncoder<ScalePacket>
 {
     private PacketManager packetManager;
 
@@ -33,9 +33,9 @@ public class ScaleNetworkEndcoder  extends MessageToByteEncoder<ScalePacket>
             throw new IllegalArgumentException("Packet not found (" + packet.getClass() + ")");
         }
 
-        try {
+        try (ByteBufOutputStream bufStream = new ByteBufOutputStream(out)){
             out.writeByte(id);
-            packet.onWrite(new ByteBufOutputStream(out));
+            packet.onWrite(bufStream);
         }
         catch (Exception e)
         {

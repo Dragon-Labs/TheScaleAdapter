@@ -13,6 +13,7 @@ import de.dragonlabs.scaleadapter.library.event.ScalePacketHandler;
 import de.dragonlabs.scaleadapter.library.packet.ScalePacket;
 
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
@@ -28,7 +29,7 @@ public class EventManager {
     /**
      * Register a new Listener for ScalePacketHandler
      * @param listener An object that extends from Listener
-     * @return EventManager the orn Object
+     * @return EventManager the own Object
      */
     public EventManager registerListener(Listener listener)
     {
@@ -39,7 +40,7 @@ public class EventManager {
     /**
      * Unregister an existing Listener for ScalePacketHandler
      * @param listener An object that extends from Listener
-     * @return
+     * @return EventManager the own Object
      */
     public EventManager unregisterListener(Listener listener)
     {
@@ -55,9 +56,8 @@ public class EventManager {
     {
         listeners.stream().filter(Objects::nonNull).forEach(l -> {
             Arrays.stream(l.getClass().getMethods())
-                    .filter(m -> m.isAnnotationPresent(ScalePacketHandler.class))
-                    .filter(m -> m.getParameterTypes().length == 1)
-                    .filter(m -> m.getParameterTypes()[0].isAssignableFrom(packet.getClass()))
+                    .parallel()
+                    .filter(m -> checkForPacketConditions(m, packet))
                     .forEach(m -> {
                         try {
                             m.invoke(l, packet);
@@ -66,5 +66,12 @@ public class EventManager {
                         }
                     });
         });
+    }
+
+    private Boolean checkForPacketConditions(Method method, ScalePacket packet) {
+        return
+            method.isAnnotationPresent(ScalePacketHandler.class)
+            && method.getParameterTypes().length == 1
+            && method.getParameterTypes()[0].isAssignableFrom(packet.getClass());
     }
 }

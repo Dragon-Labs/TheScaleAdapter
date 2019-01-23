@@ -16,11 +16,23 @@ import de.dragonlabs.scaleadapter.library.network.ScaleServer;
 
 public class ScaleNetworkFactory
 {
+    /**
+     *  Create a new Instance for a Server
+     *
+     * @param config network and event settings
+     * @return the new server instance
+     */
     public static ScaleServer createScaleServer(ScaleConfig config)
     {
         return new BaseScaleServer(config);
     }
 
+    /**
+     *  Create a new Instance for a Client
+     *
+     * @param config network and event settings
+     * @return the new client instance
+     */
     public static ScaleClient createScaleClient(ScaleConfig config)
     {
         return new BaseScaleClient(config);

@@ -7,7 +7,7 @@
     <groupId>de.dragonlabs.scaleadapter</groupId>
     <artifactId>ScaleAdapter</artifactId>
     <packaging>pom</packaging>
-    <version>1.3</version>
+    <version>1.4</version>
 
     <name>The Scale Adapter</name>
     <description>A simple and easy library to create network projects, which are based on Netty and implemented a

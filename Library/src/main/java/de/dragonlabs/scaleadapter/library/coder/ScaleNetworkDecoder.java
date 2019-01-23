@@ -37,9 +37,9 @@ public class ScaleNetworkDecoder extends ByteToMessageDecoder
             throw new IllegalArgumentException("Don't find a Packet with the ID " + id);
         }
 
-        try {
+        try (ByteBufInputStream bufStream = new ByteBufInputStream(byteBuf)) {
             packet.setChannel(ctx.channel());
-            packet.onRead(new ByteBufInputStream(byteBuf));
+            packet.onRead(bufStream);
             list.add(packet);
         }
         catch (Exception e)

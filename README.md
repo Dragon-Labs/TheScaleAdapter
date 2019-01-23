@@ -5,13 +5,13 @@
 The Scale Adapter is a library which is based on the [Netty Project](https://netty.io/) 
 and is help to create easy network projects without much work.
 
-# Installation / Usage
+## Installation / Usage
 
-- Install [Maven](http://maven.apache.org/download.cgi)
-- Clone this repo
-- Instal: ```mvn clean test install```
+  - Install [Maven](http://maven.apache.org/download.cgi)
+  - Clone this repo
+  - Instal: ```mvn clean test install```
 
-**Maven dependencies**
+### Maven dependencies
 
 _Library:_
 ```xml

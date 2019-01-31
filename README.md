@@ -1,6 +1,11 @@
+[![star this repo](http://githubbadges.com/star.svg?user=Dragon-Labs&repo=TheScaleAdapter)](https://github.com/Dragon-Labs/TheScaleAdapter)
+[![fork this repo](http://githubbadges.com/fork.svg?user=Dragon-Labs&repo=TheScaleAdapter)](https://github.com/Dragon-Labs/TheScaleAdapter/fork)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b8f63eb82a8249b29205e3019d0d363f)](https://www.codacy.com/app/Alphyron/TheScaleAdapter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Dragon-Labs/TheScaleAdapter&amp;utm_campaign=Badge_Grade)
+[![GitHub license](https://img.shields.io/github/license/Dragon-Labs/TheScaleAdapter.svg)](https://github.com/Dragon-Labs/TheScaleAdapter/blob/master/LICENSE)
+
+
 # TheScaleAdapter
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b8f63eb82a8249b29205e3019d0d363f)](https://www.codacy.com/app/Alphyron/TheScaleAdapter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Dragon-Labs/TheScaleAdapter&amp;utm_campaign=Badge_Grade)
 
 The Scale Adapter is a library which is based on the [Netty Project](https://netty.io/) 
 and is help to create easy network projects without much work.
